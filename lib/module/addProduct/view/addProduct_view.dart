@@ -6,6 +6,8 @@ import '../controller/addProduct_controller.dart';
 class AddProductView extends StatefulWidget {
   const AddProductView({Key? key}) : super(key: key);
 
+  get product => null;
+
   Widget build(context, AddProductController controller) {
     controller.view = this;
 
@@ -15,13 +17,22 @@ class AddProductView extends StatefulWidget {
         actions: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: ElevatedButton.icon(
-              icon: const Icon(Icons.save),
-              label: const Text("Save"),
+            child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green[300],
               ),
-              onPressed: () {},
+              child: (controller.widget.product == null)
+                  ? const Text(
+                      'Add',
+                      style: TextStyle(color: Colors.white),
+                    )
+                  : const Text(
+                      'Update',
+                      style: TextStyle(color: Colors.white),
+                    ),
+              onPressed: () {
+                controller.upsertProduct();
+              },
             ),
           ),
         ],
@@ -32,6 +43,7 @@ class AddProductView extends StatefulWidget {
           child: Column(
             children: [
               TextFormField(
+                controller: controller.name,
                 maxLength: 20,
                 decoration: const InputDecoration(
                   labelText: 'Product Name',
@@ -51,6 +63,7 @@ class AddProductView extends StatefulWidget {
                 onChanged: (value) {},
               ),
               TextFormField(
+                controller: controller.price,
                 keyboardType: TextInputType.number,
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 decoration: const InputDecoration(
@@ -71,6 +84,7 @@ class AddProductView extends StatefulWidget {
                 onChanged: (value) {},
               ),
               TextFormField(
+                controller: controller.description,
                 maxLines: 5,
                 decoration: const InputDecoration(
                   labelText: 'Description',

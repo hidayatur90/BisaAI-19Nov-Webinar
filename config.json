@@ -4,6 +4,7 @@
         "latihan",
         "login",
         "listProduct",
-        "addProduct"
+        "addProduct",
+        "reusableWidget"
     ]
 }

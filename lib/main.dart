@@ -4,17 +4,13 @@ import 'package:flutter/material.dart';
 void main() async {
   await initialize();
 
-  Widget mainView = const LoginView();
-
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
       navigatorKey: Get.navigatorKey,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
-      ),
-      home: mainView,
+      theme: ThemeData.light(),
+      home: const ReusableWidgetView(),
     ),
   );
 }
