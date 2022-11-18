@@ -1,0 +1,9 @@
+{
+    "modules": [
+        "dashboard",
+        "latihan",
+        "login",
+        "listProduct",
+        "addProduct"
+    ]
+}
